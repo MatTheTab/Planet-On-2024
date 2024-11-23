@@ -6,10 +6,10 @@ from tqdm import tqdm
 def createEmbeddings(model, df):
     documents = []
     for i in tqdm(range(len(df))):
-        if "\n" in df.iloc[i]["orderObject"]:
-            str_line = df.iloc[i]["orderObject"].replace("\n", " ")
+        if "\n" in df.iloc[i]["orderObject_x"]:
+            str_line = df.iloc[i]["orderObject_x"].replace("\n", " ")
         else:
-            str_line = df.iloc[i]["orderObject"]
+            str_line = df.iloc[i]["orderObject_x"]
         documents.append(str_line)
     embeddings = model.encode(documents)
     return embeddings
