@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="for better future">
+    <meta name="keywords" content="hackathon">
+    <meta name="author" content="domcia:3">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Google Fonts (optional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome Icons -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom Styles -->
+    <link id="main-stylesheet" rel="stylesheet" href="{% static 'main.css' %}">
+    <link id="high-contrast-stylesheet" rel="stylesheet" href="{% static 'highcontrast.css' %}" disabled>
+
+    <!-- Title Tag -->
+    {% if title %}
+        <title>{{ title }} - Your Website</title>
+    {% else %}
+        <title>Placeholder - Your Website</title>
+    {% endif %}
+
+</head>
+<body>
+<!-- Header with Navigation -->
+<header role="banner">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary static-top" aria-label="Main navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'base-home' %}" aria-label="Home">
+                <i class="fas fa-leaf" style="font-size: 30px;"></i>
+                EcoAnalyser
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'base-home' %}" aria-label="Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard-home' %}" aria-label="Dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="contrast-button" class="btn btn-light">
+                <i class="fas fa-adjust"></i> High Contrast
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="container-fluid mt-1" style="margin-bottom: 20px;">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer bg-dark text-light py-4">
+    <div class="container text-center">
+        <p>&copy; {{ current_year|default:"2024" }} EcoAnalyser. All rights reserved.</p>
+        <a href="#" class="text-light">Privacy Policy</a> |
+        <a href="#  " class="text-light">Terms of Service</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+<script>
+    // Funkcja do ustawiania trybu wysokiego kontrastu na podstawie zapisanego ustawienia
+    function setContrastMode() {
+        const highContrastStylesheet = document.getElementById('high-contrast-stylesheet');
+        const mainStylesheet = document.getElementById('main-stylesheet');
+        const contrastButton = document.getElementById('contrast-button');
+
+        // Odczytanie zapisanego stanu trybu wysokiego kontrastu z localStorage
+        const isHighContrast = localStorage.getItem('highContrast') === 'enabled';
+
+        // Ustawienie trybu na podstawie zapisanego stanu
+        if (isHighContrast) {
+            highContrastStylesheet.disabled = false;
+            mainStylesheet.disabled = true;
+        } else {
+            highContrastStylesheet.disabled = true;
+            mainStylesheet.disabled = false;
+        }
+
+        // Dodanie event listenera do przycisku przełączania trybu kontrastu
+        contrastButton.addEventListener('click', function() {
+            if (highContrastStylesheet.disabled) {
+                highContrastStylesheet.disabled = false;
+                mainStylesheet.disabled = true;
+                localStorage.setItem('highContrast', 'enabled'); // Zapisz stan
+            } else {
+                highContrastStylesheet.disabled = true;
+                mainStylesheet.disabled = false;
+                localStorage.setItem('highContrast', 'disabled'); // Zapisz stan
+            }
+        });
+    }
+
+    // Ustawienie trybu przy załadowaniu strony
+    window.onload = setContrastMode;
+</script>
+    
+
+</body>
+</html>
