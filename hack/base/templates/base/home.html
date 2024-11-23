@@ -3,10 +3,6 @@
 <div class="hero text-center">
     <h1>Welcome to EcoAnalyzer</h1>
     <p>Your gateway to impactful ecological insights.</p>
-    <div class="mt-4">
-        <a href="#" class="btn btn-outline-primary btn-lg mx-2">Upload Your Project</a>
-        <a href="{% url 'dashboard-home' %}" class="btn btn-outline-primary btn-lg mx-2">Explore Analytics</a>
-    </div>
 </div>
 
 <div class="card my-5">
@@ -31,15 +27,11 @@
 </div>
 
 <div class="card my-5">
-    <h2 class="card-title text-center">Find Similar Projects</h2>
-    <form method="post" action="#" enctype="multipart/form-data" class="text-center py-4">
-        {% csrf_token %}
-        <div class="mb-3">
-            <input type="file" class="form-control w-50 mx-auto" id="projectFile" name="projectFile" accept=".csv,.json">
-        </div>
-        <button type="submit" class="btn btn-primary">Find Similar Projects</button>
-        <p class="upload-feedback mt-3" style="display: none;">File uploaded successfully!</p>
-    </form>
+    <h2 class="card-title text-center">Search Similar Projects</h2>
+    <p class="text-center">Discover similar projects which emphasise ecological approaches.</p>
+    <div class="text-center mt-3">
+        <a href="{% url 'search-home' %}" class="btn btn-primary btn-lg">Go to Project Search</a>
+    </div>
 </div>
 
 <div class="card my-5">

@@ -1,236 +1,98 @@
-/* Ogólne tło strony - tryb wysokiego kontrastu */
-body {
-    background-color: #000000 !important; /* Czarne tło */
-    color: #FFFFFF !important; /* Biały tekst */
+/* General Body Style */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Hero section */
-.hero {
-    color: #ffffff;
-    padding: 50px 20px;
-}
-.hero h1 {
-    font-size: 3rem;
-    color: #ffffff;
-}
-.hero p {
-    color: #ffffff;
-    font-size: 1.25rem;
+/* Main content should grow to fill the remaining space */
+main {
+    flex: 1; /* Allows the main content to push the footer to the bottom */
+    margin-bottom: 20px; /* Add spacing below content if needed */
 }
 
-/* Karty */
+/* Footer remains at the bottom */
+.footer {
+    background-color: #000000 !important; /* Black background */
+    color: #FFFFFF !important; /* White text */
+    border-top: 2px solid #FFFFFF !important; /* White border at the top */
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Footer Links */
+.footer a {
+    color: #FFFFFF !important; /* White links */
+    text-decoration: none !important;
+}
+
+.footer a:hover {
+    color: #FFFF00 !important; /* Yellow links on hover */
+    text-decoration: underline !important;
+}
+
+/* Card Style */
 .card {
     margin: 0 auto;
     max-width: 1200px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    border: 2px solid #FFFFFF !important; /* Biała obwódka */
-    background-color: #333333 !important; /* Ciemnoszare tło */
-    color: #FFFFFF !important; /* Biały tekst */
+    border: 2px solid #FFFFFF !important; /* White border */
+    background-color: #333333 !important; /* Dark gray background */
+    color: #FFFFFF !important; /* White text */
 }
 
-.card.border-primary {
-    border-color: #FFFFFF !important; /* Biała obwódka */
-}
-
-/* Przyciski */
+/* Button Style */
 .btn-primary, .btn-outline-primary {
-    background-color: #FFFFFF !important; /* Białe tło */
-    border-color: #FFFFFF !important; /* Biała obwódka */
-    color: #000000 !important; /* Czarny tekst */
+    background-color: #000000 !important; /* Black background on hover */
+    border-color: #FFFFFF !important; /* White border on hover */
+    color: #FFFFFF !important; /* White text on hover */
 }
 
 .btn-primary:hover, .btn-outline-primary:hover {
-    background-color: #000000 !important; /* Czarne tło przy hover */
-    border-color: #FFFFFF !important; /* Biała obwódka przy hover */
-    color: #FFFFFF !important; /* Biały tekst przy hover */
+    background-color: #333333 !important; /* White background */
+    border-color: #FFFFFF !important; /* White border */
+    color: #000000 !important; /* Black text */
 }
 
 .btn-primary:active, .btn-outline-primary:active {
-    background-color: #FFFFFF !important; /* Białe tło przy kliknięciu */
-    border-color: #FFFFFF !important; /* Biała obwódka przy kliknięciu */
-    color: #000000 !important; /* Czarny tekst przy kliknięciu */
+    background-color: #FFFFFF !important; /* White background on click */
+    border-color: #FFFFFF !important; /* White border on click */
+    color: #000000 !important; /* Black text on click */
 }
 
-/* Linki */
-a {
-    color: #FFFFFF !important; /* Białe linki */
-    text-decoration: none !important;
-}
-
-a:hover {
-    color: #FFFF00 !important; /* Żółte linki na hover */
-    text-decoration: underline !important;
-}
-
-/* Nawigacja - tryb wysokiego kontrastu */
+/* Navbar Styling */
 .navbar {
-    background-color: #000000 !important; /* Czarne tło navbaru */
-    border-bottom: 2px solid #FFFFFF !important; /* Biała obwódka */
+    background-color: #000000 !important; /* Black background */
+    border-bottom: 2px solid #FFFFFF !important; /* White border */
 }
 
 .navbar .navbar-brand {
-    color: #FFFFFF !important; /* Biały tekst w logo */
+    color: #FFFFFF !important; /* White brand text */
 }
 
 .navbar .navbar-brand:hover {
-    color: #FFFF00 !important; /* Żółty tekst na hover */
+    color: #FFFF00 !important; /* Yellow brand text on hover */
 }
 
 .navbar .nav-link {
-    color: #FFFFFF !important; /* Białe linki */
+    color: #FFFFFF !important; /* White nav links */
 }
 
 .navbar .nav-link:hover {
-    color: #FFFF00 !important; /* Żółte linki na hover */
+    color: #FFFF00 !important; /* Yellow nav links on hover */
 }
 
-.navbar-toggler {
-    border-color: #FFFFFF !important; /* Biała ramka dla przycisku burgera */
-}
-
-.navbar-toggler-icon {
-    background-color: #FFFFFF !important; /* Biała ikona burgera */
-}
-
-/* Tytuły kart */
-.card-title {
-    color: #FFFFFF !important; /* Białe tytuły */
-    font-weight: bold;
-}
-
-/* Tool cards */
-.tool-card {
-    background-color: #333333 !important; /* Ciemnoszare tło */
-    border-color: #FFFFFF !important; /* Biała obwódka */
-    color: #FFFFFF !important; /* Biały tekst */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.tool-card:hover {
-    background-color: #666666 !important; /* Jaśniejsze tło przy hover */
-    color: #000000 !important; /* Czarny tekst przy hover */
-}
-
-/* Wiadomości o błędach i sukcesach */
-.alert-success {
-    background-color: #4CAF50 !important; /* Zielony kolor sukcesu */
-    color: #FFFFFF !important; /* Biały tekst */
-}
-
-.alert-danger {
-    background-color: #D32F2F !important; /* Czerwony kolor błędu */
-    color: #FFFFFF !important; /* Biały tekst */
-}
-
-/* Formularze */
+/* Form Styling */
 .form-select, .form-control {
-    border-color: #FFFFFF !important; /* Biała obwódka */
-    background-color: #333333 !important; /* Ciemnoszare tło */
-    color: #FFFFFF !important; /* Biały tekst */
+    border-color: #FFFFFF !important; /* White border */
+    background-color: #333333 !important; /* Dark gray background */
+    color: #FFFFFF !important; /* White text */
 }
 
 .form-select:focus, .form-control:focus {
-    border-color: #000000 !important; /* Czarna obwódka przy focus */
+    border-color: #000000 !important; /* Black border on focus */
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* Kontener główny */
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #000000 !important; /* Czarne tło */
-}
-
-/* Feedback */
-.upload-feedback {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: #FFFFFF !important; /* Biały tekst */
-}
-
-/* Footer */
-.footer {
-    background-color: #000000 !important; /* Czarne tło */
-    color: #FFFFFF !important; /* Biały tekst */
-    border-top: 2px solid #FFFFFF !important; /* Biała obwódka */
-}
-
-.footer a {
-    color: #FFFFFF !important; /* Białe linki */
-    text-decoration: none !important;
-}
-
-.footer a:hover {
-    color: #FFFF00 !important; /* Żółte linki na hover */
-    text-decoration: underline !important;
-}
-
-/* Wysoki kontrast - Zmieniamy kolor ikon na biały */
-.tool-card i {
-    color: #FFFFFF !important; /* Białe ikony */
-}
-
-/* Wysoki kontrast - zmieniamy wszystkie ikony Font Awesome na białe */
-.fas, .fa {
-    color: #FFFFFF !important; /* Białe ikony */
-}
-
-/* Stylizacja wykresów w trybie wysokiego kontrastu */
-canvas {
-    background-color: #000000 !important; /* Czarne tło wykresu */
-    border-radius: 8px; /* Zaokrąglone rogi wykresu */
-    border: 1px solid #FFFFFF !important; /* Biała ramka wokół wykresu */
-}
-
-/* Osie (x i y) */
-.chartjs-axis-x,
-.chartjs-axis-y {
-    color: #FFFFFF !important; /* Białe kolory osi */
-}
-
-/* Linia wykresu */
-.chartjs-line {
-    border-color: #FFFF00 !important; /* Żółta linia wykresu */
-}
-
-/* Punkty na wykresie */
-.chartjs-point {
-    background-color: #FFFF00 !important; /* Żółte punkty */
-    border-color: #FFFFFF !important; /* Biała obwódka punktów */
-}
-
-/* Tło wykresu (gradient) */
-.chartjs-background {
-    background-color: rgba(255, 255, 0, 0.3) !important; /* Żółte tło wykresu */
-}
-
-/* Legenda wykresu */
-.chartjs-legend {
-    color: #FFFFFF !important; /* Biała legenda */
-}
-
-/* Tooltipy wykresu */
-.chartjs-tooltip {
-    background-color: #000000 !important; /* Czarne tło tooltipu */
-    color: #FFFFFF !important; /* Biały tekst tooltipu */
-    border: 1px solid #FFFFFF !important; /* Biała ramka */
-}
-
-/* Akcenty dla linii wykresu w wysokim kontraście */
-.chartjs-line {
-    border-color: rgba(255, 255, 0, 1) !important; /* Żółta linia */
-}
-
-.chartjs-line:hover {
-    border-color: rgba(255, 255, 0, 1) !important; /* Jaśniejsza żółta linia */
-}
-
-.chartjs-point {
-    background-color: #FFFF00 !important; /* Żółte punkty */
 }

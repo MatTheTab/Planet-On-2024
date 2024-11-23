@@ -7,7 +7,7 @@ body {
 /* Hero section */
 .hero {
     color: #ffffff;
-    padding: 50px 20px;
+    padding-top: 20px;
 }
 .hero h1 {
     font-size: 3rem;
@@ -17,7 +17,6 @@ body {
     color: #388e3c;
     font-size: 1.25rem;
 }
-
 
 /* Karty */
 .card {
@@ -170,20 +169,35 @@ a:hover {
     color: white !important; /* Zmiana koloru tekstu na biały przy kliknięciu */
 }
 
-/* Footer */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should grow to fill the remaining space */
+main {
+    flex: 1; /* Allows the main content to push the footer to the bottom */
+    margin-bottom: 20px; /* Add spacing below content if needed */
+}
+
+/* Footer remains at the bottom */
 .footer {
-    background-color: #388e3c !important; /* Tło stopki - zielony */
-    color: #ffffff !important; /* Biały tekst */
-    border-top: 3px solid #66bb6a !important; /* Zielona obwódka na górze stopki */
+    background-color: #388e3c !important; /* Green background */
+    color: #ffffff !important; /* White text */
+    border-top: 3px solid #66bb6a !important; /* Green border at the top */
+    text-align: center;
+    padding: 1rem 0;
 }
 
 .footer a {
-    color: #a5d6a7 !important; /* Jaśniejszy zielony kolor dla linków w stopce */
+    color: #FFFFFF !important; /* Białe linki */
     text-decoration: none !important;
 }
 
 .footer a:hover {
-    color: #ffffff !important; /* Zmiana koloru linków na biały przy najechaniu */
-    text-decoration: none !important; /* Podkreślenie linków na hover */
+    color: #FFFF00 !important; /* Żółte linki na hover */
+    text-decoration: underline !important;
 }
-

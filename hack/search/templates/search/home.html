@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h1 class="text-center">Search Similar Projects</h1>
+
+    <!-- Explanation Text -->
+    <p class="text-center">
+        By searching CPV codes of an uploaded PDF file, we can find similar public procurement files that emphasize ecological values.
+    </p>
+
+    <!-- File Upload Form -->
+    <form method="POST" enctype="multipart/form-data" action="{% url 'search_similar_projects' %}" class="my-4 d-flex justify-content-center">
+        {% csrf_token %}
+        <div class="input-group" style="max-width: 600px;">
+            <input type="file" class="form-control" id="pdfUpload" name="pdf_file" accept=".pdf" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <!-- Interactive Table Placeholder -->
+    <div id="resultsTable" class="mt-5">
+        {% if table_html %}
+            <h2 class="text-center">Results</h2>
+            <div id="tableContainer">
+                {{ table_html|safe }}
+            </div>
+        {% else %}
+            <p class="text-center text-muted">Upload a PDF file to see results.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+
+<!-- DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#resultsTable table').DataTable({
+            pageLength: 20, // Split into pages of 20 rows
+            order: [], // Disable sorting by default
+        });
+    });
+</script>
+{% endblock %}
