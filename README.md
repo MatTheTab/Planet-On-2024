@@ -7,4 +7,4 @@ https://docs.google.com/document/d/1e-qTXdEkSR8V9xKhOg_aMbnRy-f19UttNTDELCH4pkg/
 
 https://box.psnc.pl/d/768444df91/?p=/ESG%20challenge&mode=list
 
-https://drive.google.com/file/d/1VJ1omORTboRrlXqkpAtg_AssSI0pxDGK/view?usp=drive_link
+https://drive.google.com/file/d/1VJ1omORTboRrlXqkpAtg_AssSI0pxDGK/view?usp=sharing
