@@ -1,16 +1,17 @@
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from tqdm import tqdm
 
 def createEmbeddings(model, df):
     documents = []
-    for i in range(len(df)):
+    for i in tqdm(range(len(df))):
         if "\n" in df.iloc[i]["orderObject"]:
             str_line = df.iloc[i]["orderObject"].replace("\n", " ")
         else:
             str_line = df.iloc[i]["orderObject"]
         documents.append(str_line)
-        embeddings = model.encode(documents)
+    embeddings = model.encode(documents)
     return embeddings
 
 def find_most_similar(model, embeddings, query):
@@ -21,8 +22,8 @@ def find_most_similar(model, embeddings, query):
 
 def save_embeddings(embeddings):
     all_embeddings = np.array(embeddings)
-    np.save('D:/git-pull-all-nighter/Planet-On-2024/embeddings.npy', all_embeddings)
+    np.save('./embeddings_10k.npy', all_embeddings)
 
 def load_embeddings():
-    all_embeddings = np.load('embeddings.npy')
+    all_embeddings = np.load('./embeddings_10k.npy')
     return all_embeddings
