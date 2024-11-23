@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero text-center">
+    <h1>Welcome to EcoAnalyzer</h1>
+    <p>Your gateway to impactful ecological insights.</p>
+    <div class="mt-4">
+        <a href="#" class="btn btn-outline-primary btn-lg mx-2">Upload Your Project</a>
+        <a href="{% url 'dashboard-home' %}" class="btn btn-outline-primary btn-lg mx-2">Explore Analytics</a>
+    </div>
+</div>
+
+<div class="card my-5">
+    <h2 class="card-title text-center">How Does It Work?</h2>
+    <div class="row text-center py-4">
+        <div class="col-md-4">
+            <i class="fas fa-upload fa-3x mb-2" style="color: #66bb6a;"></i>
+            <h4>Upload</h4>
+            <p>Submit your project data in seconds.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-project-diagram fa-3x mb-2" style="color: #66bb6a;"></i>
+            <h4>Discover</h4>
+            <p>Find projects similar to yours and gain inspiration.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-chart-bar fa-3x mb-2" style="color: #66bb6a;"></i>
+            <h4>Analyze</h4>
+            <p>Explore data and analytics from global efforts.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card my-5">
+    <h2 class="card-title text-center">Find Similar Projects</h2>
+    <form method="post" action="#" enctype="multipart/form-data" class="text-center py-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="file" class="form-control w-50 mx-auto" id="projectFile" name="projectFile" accept=".csv,.json">
+        </div>
+        <button type="submit" class="btn btn-primary">Find Similar Projects</button>
+        <p class="upload-feedback mt-3" style="display: none;">File uploaded successfully!</p>
+    </form>
+</div>
+
+<div class="card my-5">
+    <h2 class="card-title text-center">Dive into Our Analytics</h2>
+    <p class="text-center">Discover insights from ongoing ecological projects around the world.</p>
+    <div class="text-center mt-3">
+        <a href="{% url 'dashboard-home' %}" class="btn btn-primary btn-lg">Go to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
