@@ -3,79 +3,63 @@
 
 {% block content %}
 <div class="container mt-5">
-    <!-- Sekcja nagłówka -->
-    <div class="hero text-center">
-        <h1>Welcome to Dashboard</h1>
-        <p>Analyze and track ecological projects.</p>
-    </div>
+    <!-- Page Title -->
+    <h1 class="text-center">Dashboard</h1>
 
-    <!-- Sekcja z kartami -->
-    <div class="row gy-4">
-        {% for card in mock_data.cards %}
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <i class="fas {{ card.icon }} fa-2x mb-3"></i>
-                    <h5 class="card-title">{{ card.title }}</h5>
-                    <p class="card-text">
-                        <strong>{{ card.value }}</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- Sekcja z wykresami -->
-    <div class="row mt-5 gy-4">
-        {% for chart in mock_data.charts %}
+    <!-- Plot Grid - First 4 plots in 2x2 grid -->
+    <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ chart.title }}</h5>
-                    <canvas id="chart-{{ chart.id }}"></canvas>
+                    <img src="{{ plot_1_url }}" alt="Plot 1" class="img-fluid" style="max-width: 100%; max-height: 300px;">
                 </div>
             </div>
         </div>
-        {% endfor %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ plot_2_url }}" alt="Plot 2" class="img-fluid" style="max-width: 100%; max-height: 300px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ plot_3_url }}" alt="Plot 3" class="img-fluid" style="max-width: 100%; max-height: 300px;">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Violin Plot (Switchable) -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center card-body">
+                    <img id="violinPlot" src="{{ violin_plot_1_url }}" alt="Violin Plot 1" class="img-fluid" style="max-width: 100%; max-height: 292px;">
+                </div>
+            </div>
+            
+            <!-- Switch buttons -->
+            <div class="text-center mt-3">
+                <button class="btn btn-secondary" id="prevPlotButton" onclick="changeViolinPlot(-1)">Previous</button>
+                <button class="btn btn-secondary ml-3" id="nextPlotButton" onclick="changeViolinPlot(1)">Next</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Sekcja JavaScript dla wykresów -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        {% for chart in mock_data.charts %}
-        new Chart(document.getElementById('chart-{{ chart.id }}'), {
-            type: 'line',
-            data: {
-                labels: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień'],
-                datasets: [{
-                    label: '{{ chart.title }}',
-                    data: {{ chart.value|safe }},
-                    borderColor: 'rgba(56, 142, 60, 0.8)',
-                    backgroundColor: 'rgba(56, 142, 60, 0.3)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'top' },
-                },
-                scales: {
-                    x: {
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        title: { display: true, text: 'Miesiące' }
-                    },
-                    y: {
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        title: { display: true, text: 'Wartości' }
-                    }
-                }
-            }
-        });
-        {% endfor %}
-    });
+    let currentPlot = 1; // Default plot 1
+
+    function changeViolinPlot(direction) {
+        // Update plot number based on direction (next or previous)
+        currentPlot = (currentPlot + direction - 1 + 3) % 3 + 1;  // Loop through 1, 2, 3
+        const plotUrl = `/static/violin_plot_${currentPlot}.png`; // Assume URLs are named like violin_plot_1.png, violin_plot_2.png, etc.
+        document.getElementById('violinPlot').src = plotUrl;
+    }
 </script>
 {% endblock %}
