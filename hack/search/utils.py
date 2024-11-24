@@ -40,7 +40,7 @@ def extract_cpv_codes(pdf_path):
     return codes
 
 def extract_description(pdf_path):
-    keyword_multi = "Nazwa zamówienia:"
+    keyword_multi = "Nazwa zamówienia"
     
     # Open the PDF file
     with fitz.open(pdf_path) as doc:
