@@ -74,7 +74,7 @@ def get_matching_rows(codes, df, description, model):
     descrption_embedding = model.encode([description])
     similarities = cosine_similarity(descrption_embedding, all_embeddings)
     
-    sorted_idx = np.argsort(np.reshape(similarities, -1))
+    sorted_idx = np.argsort(np.reshape(similarities, -1))[::-1]
     sorted_df = df.reindex(sorted_idx)
 
     matching_columns = [col for col in codes if col in sorted_df.columns]
